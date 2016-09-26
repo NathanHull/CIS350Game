@@ -1,4 +1,4 @@
-public class House{
+public class House implements IHouse{
 
 	private int id;
 	private int price;

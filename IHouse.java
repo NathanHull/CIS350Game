@@ -3,14 +3,14 @@ package buyLowSellHigh;
 public interface IHouse {
 	
 	/*
-	 * Whether or not the house is currently for sale or the player's
+	 * Whether or not the house is currently for sale
 	 */
-	boolean forSale();
+	boolean owned();
 	
 	/*
-	 * Current cost of the house
+	 * Current price of the house
 	 */
-	int cost();
+	int price();
 	
 	/*
 	 * Int determining what type of house this is.
@@ -18,5 +18,5 @@ public interface IHouse {
 	 * 1: med cost
 	 * 2: high cost
 	 */
-	int type();
+	int tier();
 }
