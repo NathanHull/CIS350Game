@@ -1,5 +1,0 @@
-/**
-*
-*	Test commit from git bash for Matt Pairitz
-*
-**/
