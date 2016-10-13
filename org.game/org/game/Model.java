@@ -18,11 +18,14 @@ public class Model {
 		houseGenerator(700, 0);
 		while (!houseList.isEmpty()) {
 			for (House h : houseList) {
-				h.internalEconomy();
+				if(h.internalEconomy()){
+					housesToRemove.add(h);
+				}
 				System.out.println("House price: " + h.getPrice());
 				
 			}
-			Thread.sleep(1000);
+			Thread.sleep(100);
+			houseList.removeAll(housesToRemove);
 		}
 		
 		
