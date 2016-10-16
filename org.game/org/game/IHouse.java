@@ -1,19 +1,24 @@
 package org.game;
 
+/**
+ * 
+ * The interface of the House class.
+ *
+ */
 public interface IHouse {
 	
-	/*
-	 * Whether or not the house is currently for sale
+	/**
+	 * @return Whether or not the house is currently for sale.
 	 */
 	boolean getOwnershipState();
 	
-	/*
-	 * Current price of the house
+	/**
+	 * @return Current price of the house
 	 */
 	int getPrice();
 	
-	/*
-	 * Int determining what type of house this is.
+	/**
+	 * @return Int determining what type of house this is.
 	 * 0: low cost
 	 * 1: med cost
 	 * 2: high cost
