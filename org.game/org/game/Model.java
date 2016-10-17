@@ -55,6 +55,10 @@ public class Model {
 	 * @param h : the house
 	 */
 	public final void buyHouse(final House h) {
+		if (wallet < h.getPrice() || h.getOwnershipState()) {
+			return;
+		}
+		
 		wallet = wallet - h.getPrice();
 		h.setOwnershipState(true);
 	}
@@ -64,8 +68,10 @@ public class Model {
 	 * @param h : the house
 	 */
 	public final void sellHouse(final House h) {
-		wallet = wallet + h.getPrice();
-		h.setOwnershipState(false);
+		if (h.getOwnershipState()) {
+			wallet = wallet + h.getPrice();
+			h.setOwnershipState(false);
+		}
 	}
 	
 	/**
