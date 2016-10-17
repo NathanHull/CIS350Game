@@ -92,7 +92,7 @@ public class GUI {
 		panel.add(label, BorderLayout.CENTER);
 		wallet = 2000;
 		JLabel lblWallet = new JLabel("Wallet: " + wallet);
-		JLabel copyright = new JLabel("Version 1.0: Created By Real Niggas Inc. Copyright 2016 \u00a9");
+		JLabel copyright = new JLabel("Version 1.0: Created By TBD. Copyright 2016 \u00a9");
 		
 		panel_1.add(lblWallet);
 		
