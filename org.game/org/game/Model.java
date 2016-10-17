@@ -1,6 +1,8 @@
 package org.game;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * 
@@ -12,7 +14,7 @@ public class Model {
 	/**
 	 * ArrayList variables houseList.
 	 */
-	private ArrayList<House> houseList;
+	public House[] houseList;
 
 	/**
 	 * 
@@ -28,25 +30,14 @@ public class Model {
 	 * @throws InterruptedException : Exception to throw when interrupted
 	 */
 	public Model() throws InterruptedException {
-		houseList = new ArrayList<House>();
-		ArrayList<House> housesToRemove = new ArrayList<House>();
+		houseList = new House[6];
+		Arrays.fill(houseList, null);
+		//House[] housesToRemove = new House[6];
 		houseGenerator(500, 0);
 		houseGenerator(1000, 1);
 		houseGenerator(700, 0);
-		while (!houseList.isEmpty()) {
-			for (House h : houseList) {
-				if (h.internalEconomy()) {
-					housesToRemove.add(h);
-				}
-				System.out.println("House price: " + h.getPrice());
-				
-			}
 			Thread.sleep(100);
-			houseList.removeAll(housesToRemove);
 		}
-		
-		
-	}
 
 	/**
 	 * 
@@ -55,7 +46,13 @@ public class Model {
 	 */
 	public final void houseGenerator(final int initialPrice, final int tier) {
 		House h = new House(initialPrice, tier);
-		houseList.add(h);
+		for(int i=0;i<houseList.length-1;i++)
+		{
+			if(houseList[i] == null)
+			{
+				houseList[i] = h;
+			}
+		}
 	}
 
 	/**
@@ -65,5 +62,8 @@ public class Model {
 	public final void buyHouse(final House h) {
 		h.setOwnershipState(true);
 	}
-
+	
+	public final void sellHouse(final House h) {
+		h.setOwnershipState(false);
+	}
 }
