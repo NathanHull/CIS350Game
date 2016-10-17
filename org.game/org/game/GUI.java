@@ -21,19 +21,46 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+ * 
+ * GUI class.
+ *
+ */
 public class GUI {
 
+	/**
+	 * JFrame.
+	 */
 	private JFrame frame;
+	/**
+	 * JButton.
+	 */
 	private JButton buyHouse1, sellHouse1, buyHouse2, sellHouse2, buyHouse3, sellHouse3;
+	/**
+	 * JMenuBar.
+	 */
 	private JMenuBar menuBar;
+	/**
+	 * JMenu.
+	 */
 	private JMenu options, quit;
+	/**
+	 * JMenuItem.
+	 */
 	private JMenuItem OptionsItem, QuitItem;
+	/**
+	 * Model.
+	 */
 	Model model;
+	/**
+	 * Wallet.
+	 */
 	int wallet;
 	
 
 	/**
 	 * Launch the application.
+	 * @param args : the args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -155,61 +182,49 @@ public class GUI {
 		frame.getContentPane().add(panel2);
 	}
 	
-	public class ButtonListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
+	/**
+	 * 
+	 * ButtonListener class.
+	 *
+	 */
+	public class ButtonListener implements ActionListener {
+		/**
+		 * @param event : the even that is happening
+		 */
+		public void actionPerformed(ActionEvent event) {
 			Object select = event.getSource();
 			
-			if(select == buyHouse1)
-			{
-				if(model.houseList[0].getOwnershipState() == false)
-				{
+			if (select == buyHouse1) {
+				if (!model.houseList[0].getOwnershipState()) {
 					wallet = wallet - model.houseList[0].getPrice();
 					model.buyHouse(model.houseList[0]);
 				}
-			}
-			
-			else if(select == sellHouse1)
-			{
-				if(model.houseList[0].getOwnershipState() == true)
-				{
+			} else if (select == sellHouse1) {
+				if (model.houseList[0].getOwnershipState()) {
 					wallet = wallet + model.houseList[0].getPrice();
 					model.sellHouse(model.houseList[0]);
 				}
 			}
 			
-			if(select == buyHouse2)
-			{
-				if(model.houseList[1].getOwnershipState() == false)
-				{
+			if (select == buyHouse2) {
+				if (!model.houseList[1].getOwnershipState()) {
 					wallet = wallet - model.houseList[1].getPrice();
 					model.buyHouse(model.houseList[1]);
 				}
-			}
-			
-			else if(select == sellHouse2)
-			{
-				if(model.houseList[1].getOwnershipState() == true)
-				{
+			} else if (select == sellHouse2) {
+				if (model.houseList[1].getOwnershipState()) {
 					wallet = wallet + model.houseList[1].getPrice();
 					model.sellHouse(model.houseList[1]);
 				}
 			}
 			
-			if(select == buyHouse3)
-			{
-				if(model.houseList[2].getOwnershipState() == false)
-				{
+			if (select == buyHouse3) {
+				if (!model.houseList[2].getOwnershipState()) {
 					wallet = wallet - model.houseList[2].getPrice();
 					model.buyHouse(model.houseList[2]);
 				}
-			}
-			
-			else if(select == sellHouse3)
-			{
-				if(model.houseList[2].getOwnershipState() == true)
-				{
+			} else if (select == sellHouse3) {
+				if (model.houseList[2].getOwnershipState()) {
 					wallet = wallet + model.houseList[2].getPrice();
 					model.sellHouse(model.houseList[2]);
 				}
