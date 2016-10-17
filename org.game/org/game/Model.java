@@ -1,7 +1,6 @@
 package org.game;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -46,10 +45,8 @@ public class Model {
 	 */
 	public final void houseGenerator(final int initialPrice, final int tier) {
 		House h = new House(initialPrice, tier);
-		for(int i=0;i<houseList.length-1;i++)
-		{
-			if(houseList[i] == null)
-			{
+		for (int i = 0; i < houseList.length - 1; i++) {
+			if (houseList[i] == null) {
 				houseList[i] = h;
 			}
 		}
@@ -63,6 +60,10 @@ public class Model {
 		h.setOwnershipState(true);
 	}
 	
+	/**
+	 * 
+	 * @param h : the house
+	 */
 	public final void sellHouse(final House h) {
 		h.setOwnershipState(false);
 	}
