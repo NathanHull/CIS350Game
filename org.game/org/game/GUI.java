@@ -21,19 +21,47 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+ * 
+ * GUI class.
+ *
+ */
 public class GUI {
 
+	/**
+	 * JFrame.
+	 */
 	private JFrame frame;
-	private JButton buyHouse1, sellHouse1, buyHouse2, sellHouse2, buyHouse3, sellHouse3;
+	/**
+	 * JButton.
+	 */
+	private JButton buyHouse1, sellHouse1, buyHouse2, sellHouse2, buyHouse3, sellHouse3, buyHouse4, sellHouse4, buyHouse5, sellHouse5, buyHouse6, sellHouse6;
+	/**
+	 * JMenuBar.
+	 */
 	private JMenuBar menuBar;
+	/**
+	 * JMenu.
+	 */
 	private JMenu options, quit;
+	/**
+	 * JMenuItem.
+	 */
 	private JMenuItem OptionsItem, QuitItem;
-	Model model;
-	int wallet;
-	
+	/**
+	 * Model.
+	 */
+	private Model model;
+	/**
+	 * Label for wallet.
+	 */
+	private JLabel lblWallet;
 
+	private ButtonListener buttonListener = new ButtonListener();
+	
 	/**
 	 * Launch the application.
+	 * @param args : the args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -90,130 +118,156 @@ public class GUI {
 		ImageIcon image = new ImageIcon("Game background resized.jpg");
 		JLabel label = new JLabel("", image, JLabel.CENTER);
 		panel.add(label, BorderLayout.CENTER);
-		wallet = 2000;
-		JLabel lblWallet = new JLabel("Wallet: " + wallet);
+		lblWallet = new JLabel("Wallet: " + model.getWallet());
 		JLabel copyright = new JLabel("Version 1.0: Created By TBD. Copyright 2016 \u00a9");
 		
 		panel_1.add(lblWallet);
 		
 		JButton buyHouse1 = new JButton("Buy");
 		buyHouse1.setBounds(10, 225, 61, 23);
+		buyHouse1.addActionListener(buttonListener);
 		frame.getContentPane().add(buyHouse1);
 		
 		JButton sellHouse1 = new JButton("Sell");
 		sellHouse1.setBounds(10, 259, 61, 23);
+		sellHouse1.addActionListener(buttonListener);
 		frame.getContentPane().add(sellHouse1);
 		
 		JButton sellHouse2 = new JButton("Sell");
 		sellHouse2.setBounds(81, 259, 61, 23);
+		sellHouse2.addActionListener(buttonListener);
 		frame.getContentPane().add(sellHouse2);
 		
 		JButton buyHouse2 = new JButton("Buy");
 		buyHouse2.setBounds(81, 225, 61, 23);
+		buyHouse2.addActionListener(buttonListener);
 		frame.getContentPane().add(buyHouse2);
 		
 		JButton buyHouse3 = new JButton("Buy");
 		buyHouse3.setBounds(148, 225, 61, 23);
+		buyHouse3.addActionListener(buttonListener);
 		frame.getContentPane().add(buyHouse3);
 		
 		JButton sellHouse3 = new JButton("Sell");
 		sellHouse3.setBounds(148, 259, 61, 23);
+		sellHouse3.addActionListener(buttonListener);
 		frame.getContentPane().add(sellHouse3);
+		
+		JButton buyHouse4 = new JButton("Buy");
+		buyHouse4.setBounds(219, 225, 63, 23);
+		buyHouse4.addActionListener(buttonListener);
+		frame.getContentPane().add(buyHouse4);
+		
+		JButton sellHouse4 = new JButton("Sell");
+		sellHouse4.setBounds(219, 259, 63, 23);
+		sellHouse4.addActionListener(buttonListener);
+		frame.getContentPane().add(sellHouse4);
+		
+		JButton buyHouse5 = new JButton("Buy");
+		buyHouse5.setBounds(292, 225, 61, 23);
+		buyHouse5.addActionListener(buttonListener);
+		frame.getContentPane().add(buyHouse5);
+		
+		JButton buyHouse6 = new JButton("Buy");
+		buyHouse6.setBounds(363, 225, 61, 23);
+		buyHouse6.addActionListener(buttonListener);
+		frame.getContentPane().add(buyHouse6);
+		
+		JButton sellHouse5 = new JButton("Sell");
+		sellHouse5.setBounds(292, 259, 61, 23);
+		sellHouse5.addActionListener(buttonListener);
+		frame.getContentPane().add(sellHouse5);
+		
+		JButton sellHouse6 = new JButton("Sell");
+		sellHouse6.setBounds(363, 259, 61, 23);
+		sellHouse6.addActionListener(buttonListener);
+		frame.getContentPane().add(sellHouse6);
 		
 		frame.getContentPane().add(panel_1);
 		
 		
 		frame.getContentPane().add(panel);
 		
-		JButton buyHouse4 = new JButton("Buy");
-		buyHouse4.setBounds(219, 225, 63, 23);
-		frame.getContentPane().add(buyHouse4);
-		
-		JButton sellHouse4 = new JButton("Sell");
-		sellHouse4.setBounds(219, 259, 63, 23);
-		frame.getContentPane().add(sellHouse4);
-		
-		JButton button = new JButton("Buy");
-		button.setBounds(292, 225, 61, 23);
-		frame.getContentPane().add(button);
-		
-		JButton button_1 = new JButton("Buy");
-		button_1.setBounds(363, 225, 61, 23);
-		frame.getContentPane().add(button_1);
-		
-		JButton button_2 = new JButton("Sell");
-		button_2.setBounds(292, 259, 61, 23);
-		frame.getContentPane().add(button_2);
-		
-		JButton button_3 = new JButton("Sell");
-		button_3.setBounds(363, 259, 61, 23);
-		frame.getContentPane().add(button_3);
-		
 		JPanel panel2 = new JPanel();
 		panel2.setBounds(10, 406, 414, 23);
 		panel2.add(copyright);
 		frame.getContentPane().add(panel2);
+
 	}
 	
-	public class ButtonListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
+	/**
+	 * 
+	 * ButtonListener class.
+	 *
+	 */
+	private class ButtonListener implements ActionListener {
+		/**
+		 * @param event : the event that is happening
+		 */
+		public void actionPerformed(ActionEvent event) {
 			Object select = event.getSource();
 			
-			if(select == buyHouse1)
-			{
-				if(model.houseList[0].getOwnershipState() == false)
-				{
-					wallet = wallet - model.houseList[0].getPrice();
-					model.buyHouse(model.houseList[0]);
+			if (event.getSource() == buyHouse1) {
+				if (!model.getHouseList()[0].getOwnershipState()) {
+					model.buyHouse(model.getHouseList()[0]);
+				}
+			} else if (select == sellHouse1) {
+				if (model.getHouseList()[0].getOwnershipState()) {
+					model.sellHouse(model.getHouseList()[0]);
 				}
 			}
 			
-			else if(select == sellHouse1)
-			{
-				if(model.houseList[0].getOwnershipState() == true)
-				{
-					wallet = wallet + model.houseList[0].getPrice();
-					model.sellHouse(model.houseList[0]);
+			if (select == buyHouse2) {
+				if (!model.getHouseList()[1].getOwnershipState()) {
+					model.buyHouse(model.getHouseList()[1]);
+				}
+			} else if (select == sellHouse2) {
+				if (model.getHouseList()[1].getOwnershipState()) {
+					model.sellHouse(model.getHouseList()[1]);
 				}
 			}
 			
-			if(select == buyHouse2)
-			{
-				if(model.houseList[1].getOwnershipState() == false)
-				{
-					wallet = wallet - model.houseList[1].getPrice();
-					model.buyHouse(model.houseList[1]);
+			if (select == buyHouse3) {
+				if (!model.getHouseList()[2].getOwnershipState()) {
+					model.buyHouse(model.getHouseList()[2]);
+				}
+			} else if (select == sellHouse3) {
+				if (model.getHouseList()[2].getOwnershipState()) {
+					model.sellHouse(model.getHouseList()[2]);
 				}
 			}
 			
-			else if(select == sellHouse2)
-			{
-				if(model.houseList[1].getOwnershipState() == true)
-				{
-					wallet = wallet + model.houseList[1].getPrice();
-					model.sellHouse(model.houseList[1]);
+			if (select == buyHouse4) {
+				if (!model.getHouseList()[2].getOwnershipState()) {
+					model.buyHouse(model.getHouseList()[3]);
+				}
+			} else if (select == sellHouse4) {
+				if (model.getHouseList()[2].getOwnershipState()) {
+					model.sellHouse(model.getHouseList()[3]);
 				}
 			}
 			
-			if(select == buyHouse3)
-			{
-				if(model.houseList[2].getOwnershipState() == false)
-				{
-					wallet = wallet - model.houseList[2].getPrice();
-					model.buyHouse(model.houseList[2]);
+			if (select == buyHouse5) {
+				if (!model.getHouseList()[4].getOwnershipState()) {
+					model.buyHouse(model.getHouseList()[4]);
+				}
+			} else if (select == sellHouse5) {
+				if (model.getHouseList()[4].getOwnershipState()) {
+					model.sellHouse(model.getHouseList()[4]);
 				}
 			}
 			
-			else if(select == sellHouse3)
-			{
-				if(model.houseList[2].getOwnershipState() == true)
-				{
-					wallet = wallet + model.houseList[2].getPrice();
-					model.sellHouse(model.houseList[2]);
+			if (select == buyHouse6) {
+				if (!model.getHouseList()[5].getOwnershipState()) {
+					model.buyHouse(model.getHouseList()[5]);
+				}
+			} else if (select == sellHouse6) {
+				if (model.getHouseList()[5].getOwnershipState()) {
+					model.sellHouse(model.getHouseList()[5]);
 				}
 			}
+			
+			lblWallet.setText("Wallet: " + model.getWallet());
 			
 			if(select == QuitItem)
 			{

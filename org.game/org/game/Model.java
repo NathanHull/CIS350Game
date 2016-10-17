@@ -25,11 +25,14 @@ public class Model {
 	 */
 	public Model() throws InterruptedException {
 		houseList = new House[5];
-		wallet = 500;
+		wallet = 1000;
 		Arrays.fill(houseList, null);
 		houseGenerator(500, 0);
 		houseGenerator(1000, 1);
 		houseGenerator(700, 0);
+		houseGenerator(250, 0);
+		houseGenerator(300, 1);
+		houseGenerator(100, 0);
 		Thread.sleep(100);
 	}
 
@@ -71,5 +74,13 @@ public class Model {
 	 */
 	public final int getWallet() {
 		return wallet;
+	}
+	
+	/**
+	 * 
+	 * @return houseList
+	 */
+	public final House[] getHouseList() {
+		return houseList;
 	}
 }
