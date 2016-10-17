@@ -215,6 +215,15 @@ public class GUI {
 				}
 			}
 			
+			if(select == QuitItem)
+			{
+				System.exit(1);
+			}
+			
+			if(select == options)
+			{
+				
+			}
 		}
 	}
 	

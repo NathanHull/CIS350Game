@@ -1,7 +1,5 @@
 package org.game;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -14,30 +12,26 @@ public class Model {
 	/**
 	 * ArrayList variables houseList.
 	 */
-	public House[] houseList;
+	private House[] houseList;
 
 	/**
-	 * 
-	 * @param args : arguments
-	 * @throws InterruptedException : Exception to throw when interrupted
+	 * Int representing money in player's wallet.
 	 */
-	public static void main(final String[] args) throws InterruptedException {
-		Model model = new Model();
-	}
+	private int wallet;
 
 	/**
 	 * 
 	 * @throws InterruptedException : Exception to throw when interrupted
 	 */
 	public Model() throws InterruptedException {
-		houseList = new House[6];
+		houseList = new House[5];
+		wallet = 500;
 		Arrays.fill(houseList, null);
-		//House[] housesToRemove = new House[6];
 		houseGenerator(500, 0);
 		houseGenerator(1000, 1);
 		houseGenerator(700, 0);
-			Thread.sleep(100);
-		}
+		Thread.sleep(100);
+	}
 
 	/**
 	 * 
@@ -46,10 +40,8 @@ public class Model {
 	 */
 	public final void houseGenerator(final int initialPrice, final int tier) {
 		House h = new House(initialPrice, tier);
-		for(int i=0;i<houseList.length-1;i++)
-		{
-			if(houseList[i] == null)
-			{
+		for (int i = 0; i < houseList.length - 1; i++) {
+			if (houseList[i] == null) {
 				houseList[i] = h;
 			}
 		}
@@ -60,10 +52,24 @@ public class Model {
 	 * @param h : the house
 	 */
 	public final void buyHouse(final House h) {
+		wallet = wallet - h.getPrice();
 		h.setOwnershipState(true);
 	}
 	
+	/**
+	 * 
+	 * @param h : the house
+	 */
 	public final void sellHouse(final House h) {
+		wallet = wallet + h.getPrice();
 		h.setOwnershipState(false);
+	}
+	
+	/**
+	 * 
+	 * @return wallet value
+	 */
+	public final int getWallet() {
+		return wallet;
 	}
 }
