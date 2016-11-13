@@ -54,27 +54,29 @@ public class House implements IHouse {
 	 * Maximum value for tier two.
 	 */
 	private final int maxTier2 = 25000;
-	
+
 	/**
 	 * 
-	 * @param hPrice : price of the house
-	 * @param hTier : tier of the house
+	 * @param hPrice
+	 *            : price of the house
+	 * @param hTier
+	 *            : tier of the house
 	 */
 	public House(final int hPrice, final int hTier) {
 		Random random = new Random();
 		this.tier = hTier;
 		this.price = hPrice;
-		this.owned = false;	// houses not owned by default
+		this.owned = false; // houses not owned by default
 		this.lifecycles = random.nextInt(20) + 20;
 		this.lifetime = 0;
 	}
-	
+
 	/**
 	 * 
 	 * @return false
 	 */
 	public final boolean internalEconomy() {
-		
+
 		if (this.lifetime <= 15) {
 			priceChange(true);
 			this.lifetime++;
@@ -82,17 +84,13 @@ public class House implements IHouse {
 			priceChange(false);
 			this.lifetime++;
 		}
-		
-		if (getLifetime() > getLifeCycles()) {
-			return true;
-		}
 		return false;
-		
 	}
-	
+
 	/**
 	 * 
-	 * @param raisePrice : Indicate if the the price is being raised.
+	 * @param raisePrice
+	 *            : Indicate if the the price is being raised.
 	 */
 	private void priceChange(final boolean raisePrice) {
 		Random random = new Random();
@@ -100,7 +98,7 @@ public class House implements IHouse {
 
 		if (this.getTier() == 0) {
 			index = random.nextInt((maxTier0 - minTier0) + 1) + minTier0;
-			
+
 			if (raisePrice) {
 				this.price += index;
 			} else {
@@ -108,64 +106,71 @@ public class House implements IHouse {
 			}
 		} else if (this.getTier() == 1) {
 			index = random.nextInt((maxTier1 - minTier1) + 1) + minTier1;
-			
+
 			if (raisePrice) {
-				this.price += index;
+			} else if (this.getTier() == 1) {
+				index = random.nextInt((maxTier1 - minTier1) + 1) + minTier1;
+
+				if (raisePrice) {
+					this.price += index;
+				} else {
+					this.price -= index;
+				}
 			} else {
-				this.price -= index;
-			}
-		} else {
-			index = random.nextInt((maxTier2 - minTier2) + 1) + minTier2;
-			
-			if (raisePrice) {
-				this.price += index;
-			} else {
-				this.price -= index;
+				index = random.nextInt((maxTier2 - minTier2) + 1) + minTier2;
+
+				if (raisePrice) {
+					this.price += index;
+				} else {
+					this.price -= index;
+				}
 			}
 		}
-		return;
 	}
-	
+
 	/**
 	 * @return price : The price of the house.
 	 */
 	public final int getPrice() {
 		return price;
 	}
-	
+
 	/**
 	 * @return tier : The tier of the house.
 	 */
 	public final int getTier() {
 		return tier;
 	}
-	
+
 	/**
 	 * @return owned : The ownership status of the house.
 	 */
 	public final boolean getOwnershipState() {
 		return owned;
 	}
-	
+
 	/**
 	 * 
-	 * @param hPrice : The price for which to set the house.
+	 * @param hPrice
+	 *            : The price for which to set the house.
 	 */
 	public final void setPrice(final int hPrice) {
 		this.price = hPrice;
 	}
-	
+
 	/**
 	 * 
-	 * @param hTier : The tier for which to set the house.
+	 * @param hTier
+	 *            : The tier for which to set the house.
 	 */
 	public final void setTier(final int hTier) {
 		this.tier = hTier;
 	}
-	
+
 	/**
 	 * 
-	 * @param state : The state for which to set the house.
+	 * @param state
+	 *            : The state for which to set the house.
 	 */
 	public final void setOwnershipState(final boolean state) {
 		this.owned = state;
@@ -178,7 +183,7 @@ public class House implements IHouse {
 	public final int getLifetime() {
 		return lifetime;
 	}
-	
+
 	/**
 	 * 
 	 * @return lifecycles
@@ -186,5 +191,5 @@ public class House implements IHouse {
 	public final int getLifeCycles() {
 		return lifecycles;
 	}
-	
+
 }

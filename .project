@@ -10,6 +10,11 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+<<<<<<< HEAD
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+=======
 		<buildCommand>
 			<name>net.sf.eclipsecs.core.CheckstyleBuilder</name>
 			<arguments>
@@ -19,5 +24,6 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>net.sf.eclipsecs.core.CheckstyleNature</nature>
+>>>>>>> master
 	</natures>
 </projectDescription>
