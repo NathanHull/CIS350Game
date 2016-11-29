@@ -16,9 +16,9 @@ public class Model {
 	private ArrayList<House> houseList;
 
 	/**
-	 * Int representing money in player's wallet.
+	 * Double representing money in player's wallet.
 	 */
-	private int wallet;
+	private double wallet;
 
 	/**
 	 * 
@@ -32,12 +32,7 @@ public class Model {
 		houseList = new ArrayList<House>();
 		housesToRemove = new ArrayList<House>();
 		wallet = 1000;
-		houseGenerator(500, 0);
-		houseGenerator(1000, 1);
-		houseGenerator(700, 0);
-		houseGenerator(250, 0);
-		houseGenerator(300, 1);
-		houseGenerator(100, 0);
+		houseGenerator();
 	}
 
 	/**
@@ -47,10 +42,16 @@ public class Model {
 	 * @param tier
 	 *            : the tier of the house
 	 */
-	public final void houseGenerator(final int initialPrice, final int tier) {
-
-		House h = new House(initialPrice, tier);
-		houseList.add(h);
+	public final void houseGenerator() {
+		houseList.add(new House(100, 0));
+		houseList.add(new House(250, 0));
+		houseList.add(new House(500, 1));
+		houseList.add(new House(750, 1));
+		houseList.add(new House(1000, 2));
+		houseList.add(new House(1500, 2));
+		for(int x = 0; x < houseList.size(); x++) {
+			System.out.println(houseList.get(x).getPrice());
+		}
 	}
 
 	/**
@@ -59,13 +60,14 @@ public class Model {
 	 * 			 the house
 	 * 
 	 */
-	public final void buyHouse(final House h) {
-		if (wallet < h.getPrice() || h.getOwnershipState()) {
+	public final void buyHouse(final int houseNum) {
+		if (wallet < houseList.get(houseNum).getPrice() || houseList.get(houseNum).getOwnershipState()) {
 			return;
 		}
 
-		wallet = wallet - h.getPrice();
-		h.setOwnershipState(true);
+		wallet = wallet - houseList.get(houseNum).getPrice();
+		houseList.get(houseNum).setOwned(true);
+		this.fluctuate();
 	}
 
 	/**
@@ -73,10 +75,37 @@ public class Model {
 	 * @param h
 	 *            : the house
 	 */
-	public final void sellHouse(final House h) {
-		if (h.getOwnershipState()) {
-			wallet = wallet + h.getPrice();
-			houseList.remove(h);
+	public final void sellHouse(final int houseNum) {
+		if (houseList.get(houseNum).getOwnershipState()) {
+			wallet = wallet + houseList.get(houseNum).getPrice();
+			houseList.get(houseNum).setOwned(false);
+			this.fluctuate();
+		}
+	}
+	
+	/**
+	 * Method that analyzes current market and fluctuates prices based on it
+	 * 
+	 */
+	public final void fluctuate() {
+		int ctrAvailable = 0, ctrUnavailable = 0;
+		
+		for (int x = 0; x < houseList.size(); x++) {
+			if (houseList.get(x).getOwnershipState()) {
+				ctrUnavailable++;
+			} else {
+				ctrAvailable++;
+			}
+		}
+		
+		if (ctrUnavailable > ctrAvailable) {
+			for (int x = 0; x < houseList.size(); x++) {
+				if (!houseList.get(x).getOwnershipState()) {
+					houseList.get(x).setPrice(houseList.get(x).getPrice() * 0.90);
+				} else {
+					houseList.get(x).setPrice(houseList.get(x).getPrice() * 1.10);
+				}
+			}
 		}
 	}
 
@@ -84,7 +113,7 @@ public class Model {
 	 * 
 	 * @return wallet value
 	 */
-	public final int getWallet() {
+	public final double getWallet() {
 		return wallet;
 	}
 

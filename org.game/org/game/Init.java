@@ -19,5 +19,14 @@ public class Init {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void reset() {
+		try {
+			GUI window = new GUI();
+			window.getFrame().setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

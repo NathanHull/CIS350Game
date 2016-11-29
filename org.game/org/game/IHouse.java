@@ -10,7 +10,7 @@ public interface IHouse {
 	/*
 	 * Current price of the house
 	 */
-	int getPrice();
+	double getPrice();
 	
 	/*
 	 * Int determining what type of house this is.

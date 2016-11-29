@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -26,7 +27,7 @@ import javax.swing.JTextField;
  * GUI class.
  *
  */
-public class GUI implements ActionListener {
+public class GUI extends Init implements ActionListener {
 
 	/**
 	 * JFrame
@@ -35,7 +36,7 @@ public class GUI implements ActionListener {
 	/**
 	 * JButton.
 	 */
-	private JButton buyHouse1, sellHouse1, buyHouse2, sellHouse2, buyHouse3, sellHouse3, buyHouse4, sellHouse4, buyHouse5, sellHouse5, buyHouse6, sellHouse6;
+	private JButton buyHouse0, sellHouse0, buyHouse1, sellHouse1, buyHouse2, sellHouse2, buyHouse3, sellHouse3, buyHouse4, sellHouse4, buyHouse5, sellHouse5;
 	/**
 	 * JMenuBar.
 	 */
@@ -43,11 +44,11 @@ public class GUI implements ActionListener {
 	/**
 	 * JMenu.
 	 */
-	private JMenu options, quit;
+	private JMenu options, sys;
 	/**
 	 * JMenuItem.
 	 */
-	private JMenuItem OptionsItem, QuitItem;
+	private JMenuItem OptionsItem, SysItem;
 	/**
 	 * Model.
 	 */
@@ -56,6 +57,14 @@ public class GUI implements ActionListener {
 	 * Label for wallet.
 	 */
 	private JLabel lblWallet;
+	/**
+	 * Labels for house prices
+	 */
+	private JLabel lblHP0, lblHP1, lblHP2, lblHP3, lblHP4, lblHP5;
+	/**
+	 * Decimal format for labels
+	 */
+	DecimalFormat df = new DecimalFormat("##.00");
 	
 	/**
 	 * Create the application.
@@ -80,14 +89,25 @@ public class GUI implements ActionListener {
 		
 		menuBar = new JMenuBar();
 		menuBar.setVisible(true);
-		options = new JMenu("Settings");
-		OptionsItem = new JMenuItem("Options");
-		quit = new JMenu("Quit");
-		QuitItem = new JMenuItem("End Game");
+
+		sys = new JMenu("System");
+		SysItem = new JMenuItem("Reset");
+		SysItem.addActionListener(this);
+		SysItem.setActionCommand("reset");
+		sys.add(SysItem);
+		SysItem = new JMenuItem("Quit");
+		SysItem.addActionListener(this);
+		SysItem.setActionCommand("quit");
+		sys.add(SysItem);
+		
+		options = new JMenu("Options");
+		OptionsItem = new JMenuItem("Settings");
+		OptionsItem.addActionListener(this);
+		OptionsItem.setActionCommand("settings");
 		options.add(OptionsItem);
-		quit.add(QuitItem);
+		
 		menuBar.add(options);
-		menuBar.add(quit);
+		menuBar.add(sys);
 		getFrame().setJMenuBar(menuBar);
 		
 		JPanel panel_1 = new JPanel();
@@ -99,7 +119,7 @@ public class GUI implements ActionListener {
 		ImageIcon image = new ImageIcon("Game background resized.jpg");
 		JLabel label = new JLabel("", image, JLabel.CENTER);
 		panel.add(label, BorderLayout.CENTER);
-		lblWallet = new JLabel("Wallet: " + model.getWallet());
+		lblWallet = new JLabel("Wallet: $" + df.format(model.getWallet()));
 		JLabel copyright = new JLabel("Version 1.0: Created By TBD. Copyright 2016 \u00a9");
 		
 		panel_1.add(lblWallet);
@@ -108,68 +128,79 @@ public class GUI implements ActionListener {
 		panel2.setBounds(10, 406, 414, 23);
 		panel2.add(copyright);
 		
+		JButton buyHouse0 = new JButton("Buy");
+		buyHouse0.setBounds(10, 225, 61, 23);
+		buyHouse0.addActionListener(this);
+		buyHouse0.setActionCommand("b0");
+		getFrame().getContentPane().add(buyHouse0);
+		
+		JButton sellHouse0 = new JButton("Sell");
+		sellHouse0.setBounds(10, 259, 61, 23);
+		sellHouse0.addActionListener(this);
+		sellHouse0.setActionCommand("s0");
+		getFrame().getContentPane().add(sellHouse0);
+		
+		JButton sellHouse1 = new JButton("Sell");
+		sellHouse1.setBounds(81, 259, 61, 23);
+		sellHouse1.addActionListener(this);
+		sellHouse1.setActionCommand("s1");
+		getFrame().getContentPane().add(sellHouse1);
+		
 		JButton buyHouse1 = new JButton("Buy");
-		buyHouse1.setBounds(10, 225, 61, 23);
+		buyHouse1.setBounds(81, 225, 61, 23);
 		buyHouse1.addActionListener(this);
 		buyHouse1.setActionCommand("b1");
 		getFrame().getContentPane().add(buyHouse1);
 		
-		JButton sellHouse1 = new JButton("Sell");
-		sellHouse1.setBounds(10, 259, 61, 23);
-		sellHouse1.addActionListener(this);
-		sellHouse1.setActionCommand("s1");
-		getFrame().getContentPane().add(sellHouse1);
-		/*
-		JButton sellHouse2 = new JButton("Sell");
-		sellHouse2.setBounds(81, 259, 61, 23);
-		sellHouse2.addActionListener(buttonListener);
-		getFrame().getContentPane().add(sellHouse2);
-		
 		JButton buyHouse2 = new JButton("Buy");
-		buyHouse2.setBounds(81, 225, 61, 23);
-		buyHouse2.addActionListener(buttonListener);
+		buyHouse2.setBounds(148, 225, 61, 23);
+		buyHouse2.addActionListener(this);
+		buyHouse2.setActionCommand("b2");
 		getFrame().getContentPane().add(buyHouse2);
 		
+		JButton sellHouse2 = new JButton("Sell");
+		sellHouse2.setBounds(148, 259, 61, 23);
+		sellHouse2.addActionListener(this);
+		sellHouse2.setActionCommand("s2");
+		getFrame().getContentPane().add(sellHouse2);
+		
 		JButton buyHouse3 = new JButton("Buy");
-		buyHouse3.setBounds(148, 225, 61, 23);
-		buyHouse3.addActionListener(buttonListener);
+		buyHouse3.setBounds(219, 225, 63, 23);
+		buyHouse3.addActionListener(this);
+		buyHouse3.setActionCommand("b3");
 		getFrame().getContentPane().add(buyHouse3);
 		
 		JButton sellHouse3 = new JButton("Sell");
-		sellHouse3.setBounds(148, 259, 61, 23);
-		sellHouse3.addActionListener(buttonListener);
+		sellHouse3.setBounds(219, 259, 63, 23);
+		sellHouse3.addActionListener(this);
+		sellHouse3.setActionCommand("s3");
 		getFrame().getContentPane().add(sellHouse3);
 		
 		JButton buyHouse4 = new JButton("Buy");
-		buyHouse4.setBounds(219, 225, 63, 23);
-		buyHouse4.addActionListener(buttonListener);
+		buyHouse4.setBounds(292, 225, 61, 23);
+		buyHouse4.addActionListener(this);
+		buyHouse4.setActionCommand("b4");
 		getFrame().getContentPane().add(buyHouse4);
 		
 		JButton sellHouse4 = new JButton("Sell");
-		sellHouse4.setBounds(219, 259, 63, 23);
-		sellHouse4.addActionListener(buttonListener);
+		sellHouse4.setBounds(292, 259, 61, 23);
+		sellHouse4.addActionListener(this);
+		sellHouse4.setActionCommand("s4");
 		getFrame().getContentPane().add(sellHouse4);
 		
 		JButton buyHouse5 = new JButton("Buy");
-		buyHouse5.setBounds(292, 225, 61, 23);
-		buyHouse5.addActionListener(buttonListener);
+		buyHouse5.setBounds(363, 225, 61, 23);
+		buyHouse5.addActionListener(this);
+		buyHouse5.setActionCommand("b5");
 		getFrame().getContentPane().add(buyHouse5);
 		
-		JButton buyHouse6 = new JButton("Buy");
-		buyHouse6.setBounds(363, 225, 61, 23);
-		buyHouse6.addActionListener(buttonListener);
-		getFrame().getContentPane().add(buyHouse6);
-		
 		JButton sellHouse5 = new JButton("Sell");
-		sellHouse5.setBounds(292, 259, 61, 23);
-		sellHouse5.addActionListener(buttonListener);
+		sellHouse5.setBounds(363, 259, 61, 23);
+		sellHouse5.addActionListener(this);
+		sellHouse5.setActionCommand("s5");
 		getFrame().getContentPane().add(sellHouse5);
 		
-		JButton sellHouse6 = new JButton("Sell");
-		sellHouse6.setBounds(363, 259, 61, 23);
-		sellHouse6.addActionListener(buttonListener);
-		getFrame().getContentPane().add(sellHouse6);
-		*/
+		
 		getFrame().getContentPane().add(panel_1);
 		getFrame().getContentPane().add(panel);
 		getFrame().getContentPane().add(panel2);
@@ -180,19 +211,87 @@ public class GUI implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String action = e.getActionCommand();
 		
-		if(action.equals("b1")){
+		if(action.equals("b0")){
 			if(!getHouse(0).getOwnershipState()){
-				model.buyHouse(getHouse(0));
+				model.buyHouse(0);
+			}
+		}
+		if(action.equals("s0")){
+			if(getHouse(0).getOwnershipState()){
+				model.sellHouse(0);
+			}
+		}
+		
+		if(action.equals("b1")){
+			if(!getHouse(1).getOwnershipState()){
+				model.buyHouse(1);
 			}
 		}
 		if(action.equals("s1")){
-			if(getHouse(0).getOwnershipState()){
-				model.sellHouse(getHouse(0));
+			if(getHouse(1).getOwnershipState()){
+				model.sellHouse(1);
+			}
+		}
+		
+		if(action.equals("b2")){
+			if(!getHouse(2).getOwnershipState()){
+				model.buyHouse(2);
+			}
+		}
+		if(action.equals("s2")){
+			if(getHouse(2).getOwnershipState()){
+				model.sellHouse(2);
+			}
+		}
+		
+		if(action.equals("b3")){
+			if(!getHouse(3).getOwnershipState()){
+				model.buyHouse(3);
+			}
+		}
+		if(action.equals("s3")){
+			if(getHouse(3).getOwnershipState()){
+				model.sellHouse(3);
+			}
+		}
+		
+		if(action.equals("b4")){
+			if(!getHouse(4).getOwnershipState()){
+				model.buyHouse(4);
+			}
+		}
+		if(action.equals("s4")){
+			if(getHouse(4).getOwnershipState()){
+				model.sellHouse(4);
+			}
+		}
+		
+		if(action.equals("b5")){
+			if(!getHouse(5).getOwnershipState()){
+				model.buyHouse(5);
+			}
+		}
+		if(action.equals("s5")){
+			if(getHouse(5).getOwnershipState()){
+				model.sellHouse(5);
 			}
 		}
 		
 		
-		lblWallet.setText("Wallet: "+ model.getWallet());
+		if(action.equals("quit")){
+			System.exit(0);
+		}
+		if(action.equals("reset")){
+			this.frame.dispose();
+			super.reset();
+		}
+		if(action.equals("settings")){
+			System.out.println("Settings");
+		}
+		
+		
+		
+		lblWallet = new JLabel("Wallet: $" + df.format(model.getWallet()));
 	}
 	
 	/**
@@ -201,7 +300,6 @@ public class GUI implements ActionListener {
 	 */
 	public House getHouse(int i){
 		return model.getHouseList().get(i);
-		
 	}
 	
 	
