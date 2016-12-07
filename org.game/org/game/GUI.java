@@ -337,7 +337,7 @@ public class GUI extends Init implements ActionListener {
 	 * @param i : index of the house
 	 * @return the house at index i
 	 */
-	public House getHouse(final int i) {
+	final House getHouse(final int i) {
 		return model.getHouseList().get(i);
 	}
 	
@@ -345,15 +345,15 @@ public class GUI extends Init implements ActionListener {
 	/**
 	 * @return the frame
 	 */
-	public JFrame getFrame() {
+	final JFrame getFrame() {
 		return frame;
 	}
 
 	/**
 	 * @param frameToSet : the frame to set
 	 */
-	public void setFrame(final JFrame frameToSet) {
-		this.frame = frame;
+	final void setFrame(final JFrame frameToSet) {
+		this.frame = frameToSet;
 	}
 	
 }
