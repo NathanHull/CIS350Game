@@ -1,8 +1,21 @@
 package org.game;
+<<<<<<< HEAD
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import java.awt.event.*;
+=======
+//import java.awt.EventQueue;
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+//import javax.swing.JTextArea;
+//import java.awt.Graphics;
+//import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+//import java.awt.image.BufferedImage;
+//import java.io.File;
+>>>>>>> master
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.TimerTask;
@@ -12,9 +25,18 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+<<<<<<< HEAD
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.*;
+=======
+//import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+//import javax.swing.JTextField;
+
+
+>>>>>>> master
 
 /**
  * 
@@ -23,14 +45,50 @@ import java.util.*;
  */
 public class GUI extends Init implements ActionListener {
 	/**
-	 * JFrame
+	 * THREE.
+	 */
+	public static final int THREE = 3;
+	/**
+	 * FOUR.
+	 */
+	public static final int FOUR = 4;
+	/**
+	 * FIVE.
+	 */
+	public static final int FIVE = 5;
+	/**
+	 * TEN.
+	 */
+	public static final int TEN = 10;
+	/**
+	 * ONE_HUNDRED.
+	 */
+	public static final int ONE_HUNDRED = 100;
+	/**
+	 * FOUR_FIFTY.
+	 */
+	public static final int FOUR_FIFTY = 450;
+	/**
+	 * FIVE_HUNDRED.
+	 */
+	public static final int FIVE_HUNDRED = 500;
+	
+	
+	
+	
+	/**
+	 * JFrame.
 	 */
 	private JFrame frame;
 	/**
 	 * JButton.
 	 */
-	private JButton buyHouse0, sellHouse0, buyHouse1, sellHouse1, buyHouse2, sellHouse2, buyHouse3, sellHouse3,
-			buyHouse4, sellHouse4, buyHouse5, sellHouse5;
+	private JButton buyHouse0, sellHouse0, 
+		buyHouse1, sellHouse1, 
+		buyHouse2, sellHouse2, 
+		buyHouse3, sellHouse3, 
+		buyHouse4, sellHouse4, buyHouse5, 
+		sellHouse5;
 	/**
 	 * JMenuBar.
 	 */
@@ -42,7 +100,7 @@ public class GUI extends Init implements ActionListener {
 	/**
 	 * JMenuItem.
 	 */
-	private JMenuItem OptionsItem, SysItem;
+	private JMenuItem optionsItem, sysItem;
 	/**
 	 * Model.
 	 */
@@ -52,13 +110,13 @@ public class GUI extends Init implements ActionListener {
 	 */
 	private JLabel lblWallet;
 	/**
-	 * Labels for house prices
+	 * Labels for house prices.
 	 */
 	private JLabel lblHP0, lblHP1, lblHP2, lblHP3, lblHP4, lblHP5;
 	/**
-	 * Decimal format for labels
+	 * Decimal format for labels.
 	 */
-	DecimalFormat df = new DecimalFormat("##.00");
+	private DecimalFormat df = new DecimalFormat("##.00");
 
 	/**
 	 * Create the application.
@@ -88,6 +146,7 @@ public class GUI extends Init implements ActionListener {
 		menuBar.setVisible(true);
 
 		sys = new JMenu("System");
+
 		SysItem = new JMenuItem("Reset");
 		SysItem.addActionListener(this);
 		SysItem.setActionCommand("reset");
@@ -117,12 +176,14 @@ public class GUI extends Init implements ActionListener {
 		JLabel label = new JLabel("", image, JLabel.CENTER);
 		panel.add(label, BorderLayout.CENTER);
 		lblWallet = new JLabel("Wallet: $" + df.format(model.getWallet()));
-		JLabel copyright = new JLabel("Version 1.0: Created By TBD. Copyright 2016 \u00a9");
 
-		panel_1.add(lblWallet);
+		JLabel copyright = new JLabel(
+				"Version 1.0: Created By TBD. Copyright 2016 \u00a9");
+		
+		panel1.add(lblWallet);
 
 		JPanel panel2 = new JPanel();
-		panel2.setBounds(10, 406, 414, 23);
+		panel2.setBounds(TEN, 406, 414, 23);
 		panel2.add(copyright);
 
 		JPanel price_panel = new JPanel();
@@ -162,60 +223,70 @@ public class GUI extends Init implements ActionListener {
 		getFrame().getContentPane().add(sellHouse0);
 
 		JButton sellHouse1 = new JButton("Sell");
+
 		sellHouse1.setBounds(81, 259, 61, 23);
 		sellHouse1.addActionListener(this);
 		sellHouse1.setActionCommand("s1");
 		getFrame().getContentPane().add(sellHouse1);
 
 		JButton buyHouse1 = new JButton("Buy");
+
 		buyHouse1.setBounds(81, 225, 61, 23);
 		buyHouse1.addActionListener(this);
 		buyHouse1.setActionCommand("b1");
 		getFrame().getContentPane().add(buyHouse1);
 
 		JButton buyHouse2 = new JButton("Buy");
+
 		buyHouse2.setBounds(148, 225, 61, 23);
 		buyHouse2.addActionListener(this);
 		buyHouse2.setActionCommand("b2");
 		getFrame().getContentPane().add(buyHouse2);
 
 		JButton sellHouse2 = new JButton("Sell");
+
 		sellHouse2.setBounds(148, 259, 61, 23);
 		sellHouse2.addActionListener(this);
 		sellHouse2.setActionCommand("s2");
 		getFrame().getContentPane().add(sellHouse2);
 
 		JButton buyHouse3 = new JButton("Buy");
+
 		buyHouse3.setBounds(219, 225, 63, 23);
 		buyHouse3.addActionListener(this);
 		buyHouse3.setActionCommand("b3");
 		getFrame().getContentPane().add(buyHouse3);
 
 		JButton sellHouse3 = new JButton("Sell");
+
 		sellHouse3.setBounds(219, 259, 63, 23);
 		sellHouse3.addActionListener(this);
 		sellHouse3.setActionCommand("s3");
 		getFrame().getContentPane().add(sellHouse3);
 
 		JButton buyHouse4 = new JButton("Buy");
+
 		buyHouse4.setBounds(292, 225, 61, 23);
 		buyHouse4.addActionListener(this);
 		buyHouse4.setActionCommand("b4");
 		getFrame().getContentPane().add(buyHouse4);
 
 		JButton sellHouse4 = new JButton("Sell");
+
 		sellHouse4.setBounds(292, 259, 61, 23);
 		sellHouse4.addActionListener(this);
 		sellHouse4.setActionCommand("s4");
 		getFrame().getContentPane().add(sellHouse4);
 
 		JButton buyHouse5 = new JButton("Buy");
+
 		buyHouse5.setBounds(363, 225, 61, 23);
 		buyHouse5.addActionListener(this);
 		buyHouse5.setActionCommand("b5");
 		getFrame().getContentPane().add(buyHouse5);
 
 		JButton sellHouse5 = new JButton("Sell");
+
 		sellHouse5.setBounds(363, 259, 61, 23);
 		sellHouse5.addActionListener(this);
 		sellHouse5.setActionCommand("s5");
@@ -223,6 +294,7 @@ public class GUI extends Init implements ActionListener {
 
 		getFrame().getContentPane().add(price_panel);
 		getFrame().getContentPane().add(panel_1);
+
 		getFrame().getContentPane().add(panel);
 		getFrame().getContentPane().add(panel2);
 
@@ -327,7 +399,7 @@ public class GUI extends Init implements ActionListener {
 	/**
 	 * @return the frame
 	 */
-	public JFrame getFrame() {
+	final JFrame getFrame() {
 		return frame;
 	}
 
@@ -335,8 +407,8 @@ public class GUI extends Init implements ActionListener {
 	 * @param the
 	 *            frame to set
 	 */
-	public void setFrame(JFrame frame) {
-		this.frame = frame;
+	final void setFrame(final JFrame frameToSet) {
+		this.frame = frameToSet;
 	}
 
 	class economy extends TimerTask {

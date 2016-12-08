@@ -1,16 +1,19 @@
 package org.game;
 
-import java.awt.EventQueue;
 
-public class Init {
+/**
+ * 
+ * Init class.
+ *
+ */
+abstract class Init {
 
 	/**
 	 * Launch the application.
 	 * 
-	 * @param args
-	 *            : the args
+	 * @param args : the args
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 
 		try {
 			GUI window = new GUI();
@@ -20,6 +23,9 @@ public class Init {
 		}
 	}
 	
+	/**
+	 * Reset the GUI.
+	 */
 	public static void reset() {
 		try {
 			GUI window = new GUI();

@@ -49,10 +49,8 @@ public class House implements IHouse {
 
 	/**
 	 * 
-	 * @param hPrice
-	 *            : price of the house
-	 * @param hTier
-	 *            : tier of the house
+	 * @param hPrice : price of the house
+	 * @param hTier : tier of the house
 	 */
 	public House(final double hPrice, final int hTier) {
 		Random random = new Random();
@@ -85,8 +83,7 @@ public class House implements IHouse {
 
 	/**
 	 * 
-	 * @param hPrice
-	 *            : The price for which to set the house.
+	 * @param hPrice : The price for which to set the house.
 	 */
 	public final void setPrice(final double hPrice) {
 		this.price = hPrice;
@@ -94,8 +91,7 @@ public class House implements IHouse {
 
 	/**
 	 * 
-	 * @param hTier
-	 *            : The tier for which to set the house.
+	 * @param hTier : The tier for which to set the house.
 	 */
 	public final void setTier(final int hTier) {
 		this.tier = hTier;
@@ -103,8 +99,7 @@ public class House implements IHouse {
 
 	/**
 	 * 
-	 * @param state
-	 *            : The state for which to set the house.
+	 * @param state : The state for which to set the house.
 	 */
 	public final void setOwned(final boolean state) {
 		this.owned = state;
