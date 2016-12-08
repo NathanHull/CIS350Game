@@ -2,7 +2,6 @@ package org.game;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -395,11 +394,8 @@ public class GUI extends Init implements ActionListener {
 	class economy extends TimerTask {
 
 		public void run() {
-			for(House h: model.getHouseList()){
-				double temp = h.getPrice();
-				h.setPrice(temp+=1.0);
-				System.out.println("Prices updated");
-			}
+			model.fluctuate();
+			
 			lblHP0.setText(Double.toString(getHouse(0).getPrice()) + "     ");
 			lblHP1.setText(Double.toString(getHouse(1).getPrice()) + "     ");
 			lblHP2.setText(Double.toString(getHouse(2).getPrice()) + "     ");
