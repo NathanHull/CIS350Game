@@ -64,7 +64,6 @@ public class Model {
 		if (wallet < houseList.get(houseNum).getPrice() || houseList.get(houseNum).getOwnershipState()) {
 			return;
 		}
-
 		wallet = wallet - houseList.get(houseNum).getPrice();
 		houseList.get(houseNum).setOwned(true);
 		this.fluctuate();
