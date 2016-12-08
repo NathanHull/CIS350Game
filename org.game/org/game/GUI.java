@@ -1,42 +1,23 @@
 package org.game;
-<<<<<<< HEAD
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import java.awt.event.*;
-=======
-//import java.awt.EventQueue;
-import java.awt.BorderLayout;
-import javax.swing.JFrame;
-//import javax.swing.JTextArea;
-//import java.awt.Graphics;
-//import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.awt.image.BufferedImage;
-//import java.io.File;
->>>>>>> master
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.TimerTask;
-
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-<<<<<<< HEAD
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.*;
-=======
-//import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-//import javax.swing.JTextField;
 
 
->>>>>>> master
 
 /**
  * 
@@ -147,20 +128,20 @@ public class GUI extends Init implements ActionListener {
 
 		sys = new JMenu("System");
 
-		SysItem = new JMenuItem("Reset");
-		SysItem.addActionListener(this);
-		SysItem.setActionCommand("reset");
-		sys.add(SysItem);
-		SysItem = new JMenuItem("Quit");
-		SysItem.addActionListener(this);
-		SysItem.setActionCommand("quit");
-		sys.add(SysItem);
+		sysItem = new JMenuItem("Reset");
+		sysItem.addActionListener(this);
+		sysItem.setActionCommand("reset");
+		sys.add(sysItem);
+		sysItem = new JMenuItem("Quit");
+		sysItem.addActionListener(this);
+		sysItem.setActionCommand("quit");
+		sys.add(sysItem);
 
 		options = new JMenu("Options");
-		OptionsItem = new JMenuItem("Settings");
-		OptionsItem.addActionListener(this);
-		OptionsItem.setActionCommand("settings");
-		options.add(OptionsItem);
+		optionsItem = new JMenuItem("Settings");
+		optionsItem.addActionListener(this);
+		optionsItem.setActionCommand("settings");
+		options.add(optionsItem);
 
 		menuBar.add(options);
 		menuBar.add(sys);
@@ -180,7 +161,7 @@ public class GUI extends Init implements ActionListener {
 		JLabel copyright = new JLabel(
 				"Version 1.0: Created By TBD. Copyright 2016 \u00a9");
 		
-		panel1.add(lblWallet);
+		panel_1.add(lblWallet);
 
 		JPanel panel2 = new JPanel();
 		panel2.setBounds(TEN, 406, 414, 23);
