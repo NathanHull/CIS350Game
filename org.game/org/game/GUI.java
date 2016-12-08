@@ -188,7 +188,7 @@ public class GUI extends Init implements ActionListener {
 		price_panel.add(lblHP5);
 		
 		Timer timer = new Timer();
-		timer.schedule(new economy(), 100, 500);
+		timer.schedule(new economy(), 100, 2000);
 
 		JButton buyHouse0 = new JButton("Buy");
 		buyHouse0.setBounds(10, 225, 61, 23);
@@ -363,7 +363,10 @@ public class GUI extends Init implements ActionListener {
 		}
 
 		lblWallet.setText("Wallet: $" + df.format(model.getWallet()));
-		
+
+		if (model.getWallet() >= 2000.00) {
+			lblWallet.setText("you win!");
+		}
 	
 	}
 

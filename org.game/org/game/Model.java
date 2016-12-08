@@ -77,7 +77,6 @@ public class Model {
 		if (houseList.get(houseNum).getOwnershipState()) {
 			wallet = wallet + houseList.get(houseNum).getPrice();
 			houseList.get(houseNum).setOwned(false);
-			this.fluctuate();
 		}
 	}
 	
@@ -89,7 +88,7 @@ public class Model {
 		Random random = new Random();
 		for(House h: houseList){
 			double temp = h.getPrice();
-			if(random.nextBoolean()){
+			if(random.nextInt(100)>33){
 				h.setPrice(temp+=50);
 			} else {
 				h.setPrice(temp-=50);
