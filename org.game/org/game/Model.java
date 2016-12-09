@@ -1,7 +1,6 @@
 package org.game;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -60,15 +59,12 @@ public class Model {
 	 *             : Exception to throw when interrupted
 	 */
 
-	private List<House> housesToRemove;
-
 	/**
 	 * 
 	 * @throws InterruptedException :exception
 	 */
 	public Model() throws InterruptedException {
 		houseList = new ArrayList<House>();
-		housesToRemove = new ArrayList<House>();
 		wallet = ONE_K;
 		houseGenerator();
 	}

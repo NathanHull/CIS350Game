@@ -281,7 +281,7 @@ public class GUI extends Init implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(final ActionEvent e) {
+	public final void actionPerformed(final ActionEvent e) {
 
 		String action = e.getActionCommand();
 
